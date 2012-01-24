@@ -59,8 +59,9 @@ def parse_bugs(file):
         for attach in bug.findall("./attachment"):
             for filename in attach.findall("./filename"):
                 if filename.text.find("error_state") >= 0:
-                    print "Found possible error_state for %s: %s" % (bug_id, filename.text)
-                    fd = open("error_state.%s.%s" % (bug_id, filename.text), "w")
+                    output = filename.text.strip()
+                    print "Found possible error_state for %s: %s" % (bug_id, output)
+                    fd = open("error_state.%s.%s" % (bug_id, output), "w")
                     for data in attach.findall("./data"):
                         fd.write(base64.b64decode(data.text))
                     fd.close()
