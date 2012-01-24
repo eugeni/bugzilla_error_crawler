@@ -1,2 +1,329 @@
 This is a very simple set of python scripts for crawling freedesktop.org
 bugzilla for bugs which have i915_error_state attached to them.
+
+To use it, you just need to run 2 commands:
+
+./get_bugs.py:
+ - this will download xml data for all the bugzilla bugs (with attachments)
+   which have any attachment with file name similar to 'error_state'
+./find_bugs.py:
+ - this will process all the .xml files in current directory, guess the
+   possible i915_error_state entries, and extract them into individual
+   files.
+
+
+For example, the following sequence of commands will download all the
+i915_error_state files from fd.o bugzilla and extract them to current
+directory:
+
+[eugeni@ivb-x86_64 18:57:39 ~/intel/crawler(master)] $ ./getbugs.py 
+Saving bugs 0..25
+Saving bugs 25..50
+Saving bugs 50..75
+Saving bugs 75..100
+Saving bugs 100..125
+Saving bugs 125..150
+Saving bugs 150..175
+Saving bugs 175..179
+[eugeni@ivb-x86_64 18:59:02 ~/intel/crawler(master)] $ ls *xml
+bugs_0_25.xml  bugs_100_125.xml  bugs_125_150.xml  bugs_150_175.xml
+bugs_175_179.xml  bugs_25_50.xml  bugs_50_75.xml  bugs_75_100.xml
+[eugeni@ivb-x86_64 18:55:04 ~/intel/crawler(master)] $ ./findbugs.py .
+No runtime optimization.
+Parsing bugs_0_25...
+Found possible error_state for 40564: i915_error_state
+Found possible error_state for 41092: i915_error_state.txt
+Found possible error_state for 41098: i915_error_state.txt
+Found possible error_state for 41101: i915_error_state.txt
+Found possible error_state for 41102: i915_error_state.txt
+Found possible error_state for 41726: i915_error_state.txt
+Found possible error_state for 36515: i915_error_state
+Found possible error_state for 41103: i915_error_state.txt
+Found possible error_state for 28906: i915_error_state
+Found possible error_state for 28906: i915_error_state_-latest
+Found possible error_state for 28906: i915_error_state
+Found possible error_state for 30023: i915_error_state
+Found possible error_state for 31164: intel_error_state.tar.bz2
+Found possible error_state for 32396: i915_error_state.txt
+Found possible error_state for 32396: i915_error_state.txt
+Found possible error_state for 33310: i915_error_state.bz2
+Found possible error_state for 33821: error_state.gz
+Found possible error_state for 36048: INTEL_i915_error_state_cut
+Found possible error_state for 36246: i915_error_state
+Found possible error_state for 36326: i915_error_state
+Found possible error_state for 36326: i915_error_state
+Found possible error_state for 36326: i915_error_state
+Found possible error_state for 36326: i915_error_state
+Found possible error_state for 36326: i915_error_state
+Found possible error_state for 36459: i915_error_state
+Found possible error_state for 38567: i915_error_state.bz2
+Found possible error_state for 38567: i915_error_state.bz2
+Found possible error_state for 38567: i915_error_state.bz2
+Found possible error_state for 38567: i915_error_state.bz2
+Found possible error_state for 38919: baryluk-x41tablet-i915_error_state.gz
+Found possible error_state for 39387: i915_error_state.txt
+Found possible error_state for 39947: i915_error_state.txt
+Found possible error_state for 39962: i915_error_state.txt
+Found possible error_state for 40052: i915_error_state.txt
+ok
+Parsing bugs_150_175...
+Found possible error_state for 26326: i915_error_state
+Found possible error_state for 31875: i915_error_state.bz2
+Found possible error_state for 23589: i915_error_state
+Found possible error_state for 23897: i915_error_state.txt
+Found possible error_state for 41268: i915_error_state.bz2
+Found possible error_state for 41268: i915_error_state2.bz2
+Found possible error_state for 27146: i915_error_state
+Found possible error_state for 27146: i915_error_state
+Found possible error_state for 27180: i915_error_state.txt
+Found possible error_state for 29252: i915_error_state
+Found possible error_state for 29252: i915_error_state-failed0.txt
+Found possible error_state for 29252: i915_error_state-failed-patch1.txt
+Found possible error_state for 29252: i915_error_state.txt
+Found possible error_state for 29345: i915_error_state.txt
+Found possible error_state for 40324: i915_error_state
+Found possible error_state for 30120: i915_error_state
+Found possible error_state for 30120: i915_error_state
+Found possible error_state for 27115: i915_error_state
+Found possible error_state for 26557: i915_error_state-etracer
+!! Duplicate found: 34421 -> 34056!
+Found possible error_state for 34421: error_state.log
+Found possible error_state for 29097: i915_error_state
+Found possible error_state for 36821: i915_error_state.zip
+Found possible error_state for 35614: i915_error_state.zip
+Found possible error_state for 38362: i915_error_state.tar.gz
+Found possible error_state for 39133: i915_error_state.log
+Found possible error_state for 39257: i915_error_state.zip
+Found possible error_state for 42885: i915_error_state
+Found possible error_state for 44252: i915_error_state.msg
+Found possible error_state for 44338: i915_error_state
+Found possible error_state for 31401: i915_error_state.log
+ok
+Parsing bugs_175_179...
+Found possible error_state for 30097: i915_error_state
+!! Duplicate found: 38393 -> 38362!
+Found possible error_state for 38393: i915_error_state.tar.gz
+Found possible error_state for 37348: i915_error_state.tar.bz2
+ok
+Parsing bugs_25_50...
+Found possible error_state for 40960: i915_error_state.bz2
+Found possible error_state for 41091: i915_error_state.txt
+Found possible error_state for 41097: i915_error_state.txt
+Found possible error_state for 42141: i915_error_state
+Found possible error_state for 42141: i915_error_state
+Found possible error_state for 42728: i915_error_state
+Found possible error_state for 44091: i915_error_state.after.1039.953924.txt
+Found possible error_state for 44091: i915_error_state.337635ab97.txt
+Found possible error_state for 44091: i915_error_state.c9f7f10b.txt
+Found possible error_state for 44091: i915_error_state.0dc5c0651cb69.txt
+Found possible error_state for 44384: i915_error_state.bz2
+Found possible error_state for 44384: i915_error_state.bz2
+Found possible error_state for 44384: i915_error_state.bz2
+Found possible error_state for 44384: i915_error_state.bz2
+Found possible error_state for 44886: i915_error_state.txt
+Found possible error_state for 27685: i915_error_state
+Found possible error_state for 29046: i915_error_state
+Found possible error_state for 29046: i915_error_state
+Found possible error_state for 43427: i915_error_state
+Found possible error_state for 43761: i915_error_state.gz
+Found possible error_state for 43762: i915_error_state.gz
+Found possible error_state for 43762: i915_error_state.gz
+Found possible error_state for 43762: i915_error_state.gz
+Found possible error_state for 44992: i915_error_state (with 3.1.6)
+Found possible error_state for 44992: i915_error_state (with 3.2.1)
+Found possible error_state for 44992: i915_error_state (with drm-intel-fixes)
+Found possible error_state for 45181: i915_error_state.tar.bz2
+Found possible error_state for 33309: i915_error_state.txt
+Found possible error_state for 33309: i915_error_state13.txt
+Found possible error_state for 33309: i915_error_state30.txt
+Found possible error_state for 40181: i915_error_state
+Found possible error_state for 44342: i915_error_state.txt
+Found possible error_state for 33805: i915_error_state
+Found possible error_state for 35863: i915_error_state.txt
+Found possible error_state for 35864: i915_error_state.txt
+Found possible error_state for 36767: error_state
+Found possible error_state for 38952: i915_error_state
+Found possible error_state for 38952: i915_error_state
+Found possible error_state for 40059: Amnesia.intel.libtxc-dxtn.4.i915_error_state.dump
+ok
+Parsing bugs_100_125...
+Found possible error_state for 28204: i915_error_state
+Found possible error_state for 28204: i915_error_state-2
+Found possible error_state for 28376: i915_error_state.txt.tar.bz2
+Found possible error_state for 28376: i915_error_state_collected.tar.bz2
+Found possible error_state for 28546: i915_error_state
+Found possible error_state for 28768: sna.error_state.gz
+Found possible error_state for 28768: sna.error_state_new.gz
+Found possible error_state for 28811: error_state
+Found possible error_state for 28964: i915_error_state.txt
+Found possible error_state for 29007: i915_error_state
+Found possible error_state for 29007: i915_error_state_overlay.txt
+Found possible error_state for 29007: i915_error_state_overlay_stride_patched.txt
+Found possible error_state for 29007: i915_error_state.txt
+Found possible error_state for 30082: i915_error_state
+Found possible error_state for 30082: i915_error_state
+Found possible error_state for 30637: i915_error_state
+Found possible error_state for 30637: i915_error_state.txt
+Found possible error_state for 31021: i915_error_state
+Found possible error_state for 31021: i915_error_state_mesa-7.8.txt
+Found possible error_state for 31899: i915_error_state_mesa-7.8.txt
+Found possible error_state for 32337: i915_error_state.log
+Found possible error_state for 32980: i915_error_state
+Found possible error_state for 33661: i915_error_state.xz
+Found possible error_state for 33770: i915_error_state
+Found possible error_state for 34014: i915_error_state.txt
+Found possible error_state for 34018: i915_error_state.txt
+Found possible error_state for 34018: i915_error_state.txt
+Found possible error_state for 34056: i915_error_state.gz
+Found possible error_state for 34056: i915_error_state.gz
+Found possible error_state for 35698: i915_error_state.gz
+Found possible error_state for 35698: i915_error_state.gz
+Found possible error_state for 35698: i915_error_state3.gz
+Found possible error_state for 35698: i915_error_state4.gz
+Found possible error_state for 35698: i915_error_state5.gz
+Found possible error_state for 35698: i915_error_state6.gz
+Found possible error_state for 35698: i915_error_state7.gz
+Found possible error_state for 35698: i915_error_state8.gz
+Found possible error_state for 35698: i915_error_state9.gz
+Found possible error_state for 35910: i915_error_state.gz
+Found possible error_state for 36102: i915_error_state
+Found possible error_state for 36176: i915_error_state.txt
+Found possible error_state for 36407: i915_error_state.tar
+!! Duplicate found: 37090 -> 33394!
+Found possible error_state for 37090: i915_error_state.log.tgz
+ok
+Parsing bugs_125_150...
+Found possible error_state for 37856: i915_error_state.gz
+Found possible error_state for 37879: i915_error_state.20110603-170446.txt
+Found possible error_state for 38083: error_state_v2.zip
+Found possible error_state for 38083: error_state_v3.zip
+Found possible error_state for 38485: i915_error_state
+Found possible error_state for 38485: i915_error_state
+Found possible error_state for 39524: i915_error_state
+Found possible error_state for 40332: 0-i915_error_state-20110824-07-06-35
+Found possible error_state for 40693: i915_error_state
+!! Duplicate found: 41266 -> 39524!
+Found possible error_state for 41266: i915_error_state.gz
+Found possible error_state for 41963: i915_error_state
+!! Duplicate found: 43083 -> 42885!
+Found possible error_state for 43083: i915_error_state.gz
+Found possible error_state for 43552: i915_error_state
+!! Duplicate found: 43587 -> 43144!
+Found possible error_state for 43587: i915_error_state
+Found possible error_state for 43688: i915_error_state
+Found possible error_state for 43704: i915_error_state.bz2
+Found possible error_state for 43706: i915_error_state.xz
+Found possible error_state for 44478: i915_error_state
+Found possible error_state for 44615: error_state
+Found possible error_state for 44615: error_state
+Found possible error_state for 44615: error_state
+Found possible error_state for 27371: celestia_hung.i915_error_state
+Found possible error_state for 27371: stellarium_hung.i915_error_state
+Found possible error_state for 27664: i915_error_state
+Found possible error_state for 27664: i915_error_state
+Found possible error_state for 28004: i915_error_state
+Found possible error_state for 28785: i915_error_state
+Found possible error_state for 29434: i915_error_state
+Found possible error_state for 30084: i915_error_state
+Found possible error_state for 30990: i915_error_state.txt
+ok
+Parsing bugs_75_100...
+Found possible error_state for 35518: i915_error_state.txt
+!! Duplicate found: 35575 -> 35576!
+Found possible error_state for 35575: i915_error_state.txt
+!! Duplicate found: 35576 -> 36515!
+Found possible error_state for 35576: i915_error_state.txt
+!! Duplicate found: 35608 -> 34014!
+Found possible error_state for 35608: i915_error_state.txt
+!! Duplicate found: 35647 -> 34014!
+Found possible error_state for 35647: i915_error_state.txt
+Found possible error_state for 35854: i915_error_state.txt
+!! Duplicate found: 35974 -> 32396!
+Found possible error_state for 35974: i915_error_state.txt
+!! Duplicate found: 35975 -> 32396!
+Found possible error_state for 35975: i915_error_state.txt
+!! Duplicate found: 35976 -> 32396!
+Found possible error_state for 35976: i915_error_state.txt
+!! Duplicate found: 36000 -> 34014!
+Found possible error_state for 36000: i915_error_state.txt
+!! Duplicate found: 37450 -> 36515!
+Found possible error_state for 37450: i915_error_state
+!! Duplicate found: 40526 -> 36515!
+Found possible error_state for 40526: i915_error_state.txt
+!! Duplicate found: 40527 -> 36515!
+Found possible error_state for 40527: i915_error_state.txt
+Found possible error_state for 27883: i915_error_state.txt.tar.bz2
+!! Duplicate found: 38413 -> 38862!
+Found possible error_state for 38413: i915_error_state.tar.gz
+Found possible error_state for 38863: i915_error_state.tar.gz
+Found possible error_state for 41096: i915_error_state.txt
+Found possible error_state for 23967: i915_error_state.201002251905.gz
+Found possible error_state for 23967: skyrocket.i915_error_state
+Found possible error_state for 23967: skyrocket_new.i915_error_state
+Found possible error_state for 23967: i915_error_state.skyrocket
+Found possible error_state for 26560: i915_error_state
+Found possible error_state for 26560: i915_error_state-2
+Found possible error_state for 26560: i915_error_state-3
+Found possible error_state for 26645: i915_error_state_xscreensaver
+Found possible error_state for 26645: i915_error_state_xscreensaver_glknots
+Found possible error_state for 26645: i915_error_state_xscreensaver_patch_applied
+!! Duplicate found: 26746 -> 26345!
+Found possible error_state for 26746: i915_error_state-dump2.txt
+Found possible error_state for 26746: i915_error_state-dump.txt
+Found possible error_state for 26746: i915_error_state_v2.6.29-rc1-51333-g9df3079.txt
+Found possible error_state for 26746: dri-0-i915_error_state-crash3
+Found possible error_state for 26746: dri-0-i915_error_state-crash4
+Found possible error_state for 26808: i915_error_state
+Found possible error_state for 27070: i915_error_state.txt
+Found possible error_state for 27188: i915_error_state
+Found possible error_state for 27188: i915_error_state2.txt
+ok
+Parsing bugs_50_75...
+Found possible error_state for 41184: i915_error_state.txt
+Found possible error_state for 42538: i915_error_state.gz
+Found possible error_state for 42538: error_state_after_glretrace
+Found possible error_state for 44034: i915_error_state.txt
+Found possible error_state for 44364: i915_error_state.intel-770a953ff0--mesa-2cd7e5b737.txt
+Found possible error_state for 44364: i915_error_state.intel-307276d7-mesa-f82d40d4b1.txt
+Found possible error_state for 44711: gpu_hang__i915_error_state
+Found possible error_state for 44781: i915_error_state-mesa-bb1f0cf3.txt
+Found possible error_state for 44781: i915_error_state-mplayer-vo-gl.txt
+Found possible error_state for 45002: i915_error_state.htm
+Found possible error_state for 45002: i915_error_state.htm
+Found possible error_state for 43182: i915_error_state_2011_11.bz2
+Found possible error_state for 32582: i915_2.6.37rc7+_error_state.txt
+Found possible error_state for 41099: i915_error_state.txt
+Found possible error_state for 41099: i915_error_state
+Found possible error_state for 40503: i915_error_state
+Found possible error_state for 40503: i915_error_state
+Found possible error_state for 40503: i915_error_state
+Found possible error_state for 40503: i915_error_state
+Found possible error_state for 40503: i915_error_state
+Found possible error_state for 43144: i915_error_state.txt
+Found possible error_state for 43144: i915_error_state.txt
+Found possible error_state for 43144: i915_error_state_semaphores1
+Found possible error_state for 44156: i915_error_state-2012-01-01-14.33.txt
+Found possible error_state for 26345: i915_error_state-2.6.33-rc8-srect10-srect500
+Found possible error_state for 26345: i915_error_state
+Found possible error_state for 26345: i915_error_state_wtf
+Found possible error_state for 26345: gpu_error_state
+Found possible error_state for 26345: i915_error_state
+!! Duplicate found: 34948 -> 34014!
+Found possible error_state for 34948: i915_error_state.txt
+Found possible error_state for 34948: i915_error_state.txt
+Found possible error_state for 36147: i915_error_state
+Found possible error_state for 25475: i915_error_state
+Found possible error_state for 25475: i915_error_state.tomasm
+Found possible error_state for 38771: i915_error_state
+Found possible error_state for 27100: i915_error_state.txt
+!! Duplicate found: 34015 -> 34014!
+Found possible error_state for 34015: i915_error_state.txt
+Found possible error_state for 34017: i915_error_state.txt
+Found possible error_state for 34294: i915_error_state
+Found possible error_state for 34294: i915_error_state
+Found possible error_state for 34307: i915_error_state.txt
+!! Duplicate found: 34461 -> 34017!
+Found possible error_state for 34461: i915_error_state.txt
+ok
+
+
