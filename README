@@ -1,0 +1,2 @@
+This is a very simple set of python scripts for crawling freedesktop.org
+bugzilla for bugs which have i915_error_state attached to them.
