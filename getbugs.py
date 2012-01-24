@@ -44,5 +44,4 @@ def bugs_details(bugs, bugs_at_once=25):
 
 if __name__ == "__main__":
     bugs = list_bugs()
-    print bugs
     bugs_details(bugs)
