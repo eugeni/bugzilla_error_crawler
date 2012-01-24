@@ -71,7 +71,7 @@ if __name__ == "__main__":
     files = glob("*xml")
     for file in files:
         # are we doing one file at a time?
-        print >>sys.stderr, "Parsing %s.." % file,
+        print "Parsing %s.." % file
         try:
             parse_bugs(file)
             print >>sys.stderr, "ok"
